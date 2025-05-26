@@ -1289,6 +1289,10 @@ button:hover {
         justify-content: center;
         gap: 0.5rem;
     }
+    .social-links {
+        justify-content: center;
+        gap: 0.5rem;
+    }
 }
 
 /* Animation Classes */
