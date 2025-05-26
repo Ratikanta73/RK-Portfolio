@@ -71,3 +71,31 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     // Add your form submission logic here
     console.log('Form submitted');
 });
+
+// Add at the end of your script.js file
+
+// Scroll animations
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementBottom = element.getBoundingClientRect().bottom;
+        const isVisible = (elementTop < window.innerHeight - 100) && (elementBottom > 0);
+        
+        if (isVisible) {
+            element.classList.add('visible');
+        }
+    });
+}
+
+// Initial check on page load
+document.addEventListener('DOMContentLoaded', () => {
+    animateOnScroll();
+    
+    // Refresh animations when page is fully loaded
+    window.addEventListener('load', animateOnScroll);
+    
+    // Add animation on scroll
+    window.addEventListener('scroll', animateOnScroll);
+});
