@@ -99,3 +99,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add animation on scroll
     window.addEventListener('scroll', animateOnScroll);
 });
+
+// Poster Series Card Accessibility & Ripple Effect
+const posterCards = document.querySelectorAll('.poster-series-card');
+posterCards.forEach(card => {
+    // Make cards focusable
+    card.setAttribute('tabindex', '0');
+    // Keyboard accessibility
+    card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+        }
+    });
+    // Ripple effect on click
+    card.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = (e.clientX - card.getBoundingClientRect().left) + 'px';
+        ripple.style.top = (e.clientY - card.getBoundingClientRect().top) + 'px';
+        card.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 500);
+    });
+});
+
+// WhatsApp Contact Form Integration
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = contactForm.querySelector('input[type="text"]').value.trim();
+        const email = contactForm.querySelector('input[type="email"]').value.trim();
+        const message = contactForm.querySelector('textarea').value.trim();
+        const phone = '7847038007';
+        const text = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+        const whatsappUrl = `https://wa.me/${phone}?text=${text}`;
+        window.open(whatsappUrl, '_blank');
+    });
+}

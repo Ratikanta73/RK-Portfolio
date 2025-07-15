@@ -463,7 +463,7 @@ body {
     animation: rotate 20s linear infinite;
 }
 
-.square {
+.geo-square {
     position: absolute;
     width: 180px;
     height: 180px;
@@ -548,7 +548,7 @@ body {
         height: 150px;
     }
 
-    .square {
+    .geo-square {
         width: 130px;
         height: 130px;
     }
@@ -1397,4 +1397,123 @@ button:hover {
 .slide-in-right.visible {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* Poster Series Section */
+#poster-series {
+    padding: 60px 0 40px 0;
+    background: #f9f9f9;
+}
+#poster-series h2 {
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+.poster-series-cards {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.poster-series-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 24px 20px 16px 20px;
+    width: 260px;
+    text-align: center;
+    text-decoration: none;
+    color: #222;
+    transition: transform 0.18s, box-shadow 0.18s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.poster-series-card:hover, .poster-series-card:focus {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    outline: none;
+}
+.poster-preview {
+    border-radius: 12px;
+    margin-bottom: 16px;
+    object-fit: cover;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.poster-preview.square {
+    width: 160px;
+    height: 160px;
+}
+.poster-preview.vertical {
+    width: 120px;
+    height: 180px;
+}
+.poster-card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* Poster Gallery Styles (for both poster-series-square.html and poster-series-vertical.html) */
+.poster-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 28px;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+    padding: 0 16px 40px 16px;
+}
+.square-gallery img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    background: #fff;
+}
+.vertical-gallery img {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    background: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.vertical-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.square-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+@media (max-width: 700px) {
+    .poster-series-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .poster-series-card {
+        width: 90vw;
+        max-width: 320px;
+    }
+    .poster-gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 500px) {
+    .poster-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+main {
+    margin-top: 110px;
 }
